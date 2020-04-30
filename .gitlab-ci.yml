@@ -1,0 +1,62 @@
+# Node docker image on which our code would run
+image: node:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - backend/node_modules/
+    - frontend/node_modules/
+
+install_dependencies_backend:
+  stage: build
+  script:
+    - cd backend
+    - npm install
+  # artifacts:
+  #   paths:
+  #     - backend/node_modules/
+
+install_dependencies_frontend:
+  stage: build
+  script:
+    - cd frontend
+    - npm install
+  # artifacts:
+  #   paths:
+  #     - frontend/node_modules/
+
+testing_backend:
+  stage: test
+  script:
+    - cd backend
+    - npm test
+
+testing_frontend:
+  stage: test
+  script:
+    - cd frontend
+    - npm run test:cicd
+
+deployToAWS:
+  stage: deploy
+  script:
+    - apt install bash
+    - apt install openssh-client
+    - bash adminScripts/deploy.sh
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: always
+
+deployToAWStest:
+  stage: deploy
+  script:
+    - apt install bash
+    - apt install openssh-client
+    - bash adminScripts/deploy-test.sh
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "test"'
+      when: always

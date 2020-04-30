@@ -1,0 +1,34 @@
+input[type="file"] {
+    display: none;
+}
+
+.customfileinput {
+    border: 1px dashed #ccc;
+    display: inline-block;
+    padding: 12px 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.customfileinput:hover {
+    background-color: lightblue;
+}
+
+.fileinput {
+    border: 3px dashed green;
+    padding: 60px 40%;
+}
+
+.progressBar {
+    margin: 10px;
+}
+
+.accordion {
+    margin: 30px;
+    border: 1px solid lightgrey;
+}
+
+.newScheduleRow {
+    margin: 10px;
+}

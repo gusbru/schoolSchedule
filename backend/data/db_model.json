@@ -1,0 +1,25 @@
+{
+    "Course": "",
+    "CRN": "line 5",
+    "Subj": "line 6",
+    "Crse": "line 7",
+    "Sec": "",
+    "Cred": "",
+    "Title": "",
+    "Classes": [
+        {
+            "type": "",
+            "day": "",
+            "time": "",
+            "room": "",
+            "instructor": ""
+        },
+        {
+            "type": "",
+            "day": "",
+            "time": "",
+            "room": "",
+            "instructor": ""
+        }
+    ]
+}

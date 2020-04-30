@@ -1,0 +1,27 @@
+.search-generate-button {
+    margin-top: 20px;
+}
+
+.search-calendar {
+    border: 1px solid lightgray;
+    height: 50vh;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+.subject-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.search-selected {
+    border: 1px solid lightgray;
+    height: 50vh;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+.search-subject-form {
+    display: flex;
+    justify-content: space-between;
+}

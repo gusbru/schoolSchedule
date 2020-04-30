@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  some-mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - db2:/data/db
+      - configdb2:/data/configdb
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/mnt/backend
+      - /mnt/backend/node_modules
+    # ports:
+    # - 3030:3030
+    depends_on:
+      - some-mongo
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/mnt/frontend
+      - /mnt/frontend/node_modules
+    # ports:
+    # - 3000:3000
+    stdin_open: true
+    depends_on:
+      - backend
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx-dev_conf:/etc/nginx/conf.d
+    ports:
+      - 80:8080
+      - 3030:3030
+    depends_on:
+      - backend
+      - frontend
+volumes:
+  db2:
+  configdb2:

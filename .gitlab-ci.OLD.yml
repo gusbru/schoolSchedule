@@ -1,0 +1,13 @@
+# Node docker image on which our code would run
+image: node:alpine
+
+# lint and test are two different jobs in the same stage.
+# This allows us to run these two in parallel and making build faster
+
+# Job 1:
+deployToAWS:
+  stage: deploy
+  script:
+    - apk add bash
+    - apk add openssh-client
+    - bash adminScripts/deploy.sh
